@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Top from './Top';
+import Trending from './Trending';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path='/' element={<Top/>}/>
+      <Route path='/trend' element={<Trending/>}/>
+    </Routes>
   );
 }
 
-export default App;
+// Assuming you have a UserProvider, otherwise comment this out for now
+function AppWrap() {
+  return (
+    <BrowserRouter>
+      {/* <UserProvider> */}
+        <App />
+      {/* </UserProvider> */}
+    </BrowserRouter>
+  );
+}
+
+export default AppWrap;
